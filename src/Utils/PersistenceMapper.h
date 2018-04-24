@@ -136,7 +136,8 @@ inline std::string getPoolingOperationString(const PoolingOperation & item)
 const std::vector<std::pair<std::string, LossFunctionType>> lossFunctionMap =
 {
 	{ "MSE", LossFunctionType::MeanSquaredError },
-	{ "CE", LossFunctionType::CrossEntropy }
+	{ "CE", LossFunctionType::CrossEntropy },
+	{ "CEbin", LossFunctionType::BinaryCrossEntropy }
 };
 
 inline LossFunctionType getLossFunctionType(const std::string & str)

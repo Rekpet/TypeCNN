@@ -46,7 +46,7 @@ void SgdWithMomentum::updateWeights(Image<BackwardType> & weight, Image<Backward
 {
 	const auto flattenedSize = weight.getFlattenedSize();
 	const auto learningWeightWithDecay = learningRate * weightDecay;
-	const auto learningRateWithBatchSizeFactor = static_cast<BackwardType>(learningRate / batchSize);
+	const auto learningRateWithBatchSizeFactor = learningRate / static_cast<BackwardType>(static_cast<float>(batchSize));
 
 	for (auto i = 0u; i < flattenedSize; i++)
 	{
@@ -64,7 +64,7 @@ void SgdWithMomentum::updateWeights(std::vector<BackwardType> & weight, std::vec
 {
 	const auto length = delta.size();
 	const auto learningWeightWithDecay = learningRate * weightDecay;
-	const auto learningRateWithBatchSizeFactor = static_cast<BackwardType>(learningRate / batchSize);
+	const auto learningRateWithBatchSizeFactor = learningRate / static_cast<BackwardType>(static_cast<float>(batchSize));
 
 	for (auto i = 0u; i < length; i++)
 	{
@@ -83,7 +83,7 @@ void SgdWithMomentum::updateWeights(std::vector<Image<BackwardType>> & weight, s
 	const auto flattenedSize = weight[0].getFlattenedSize();
 	const auto vectorSize = weight.size();
 	const auto learningWeightWithDecay = learningRate * weightDecay;
-	const auto learningRateWithBatchSizeFactor = static_cast<BackwardType>(learningRate / batchSize);
+	const auto learningRateWithBatchSizeFactor = learningRate / static_cast<BackwardType>(static_cast<float>(batchSize));
 
 	for (auto k = 0u; k < vectorSize; k++)
 	{

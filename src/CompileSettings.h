@@ -12,6 +12,7 @@
 #define COMPILE_SETTINGS_H
 
 #include "src/Utils/FixedPointNumber.h"
+#include "src/Utils/FixedPointNumber64.h"
 
 /*
  * BackwardType is used for back propagation

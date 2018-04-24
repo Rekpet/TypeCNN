@@ -16,8 +16,8 @@ Adam::Adam()
 	epsilon = 1e-8f;
 	b1 = 0.9f;
 	b2 = 0.999f;
-	b1t = 0.9f;
-	b2t = 0.999f;
+	b1t = b1;
+	b2t = b2;
 }
 
  /*

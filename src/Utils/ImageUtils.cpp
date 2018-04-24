@@ -174,7 +174,7 @@ namespace ImageUtils
 	/*
 	 * @brief Dumps filters (only support grayscale or RGB)
 	 */
-	void dumpFilters(const std::string & filePrefix, const std::vector<Image<BackwardType>> & filters, const std::vector<BackwardType> & biases)
+	void dumpFiltersAsImages(const std::string & filePrefix, const std::vector<Image<BackwardType>> & filters, const std::vector<BackwardType> & biases)
 	{
 		auto cnt = 0u;
 		for (const auto & filter : filters)

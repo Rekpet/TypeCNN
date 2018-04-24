@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\3rdParty\CxxOpts\cxxopts.hpp" />
+    <ClInclude Include="..\3rdParty\lodepng\lodepng.h" />
+    <ClInclude Include="..\3rdParty\TinyXML2\tinyxml2.h" />
+    <ClInclude Include="..\src\CommandLineInterface.h" />
+    <ClInclude Include="..\src\CompileSettings.h" />
+    <ClInclude Include="..\src\ConvolutionalNeuralNetwork.h" />
+    <ClInclude Include="..\src\Image.h" />
+    <ClInclude Include="..\src\LayerAliases.h" />
+    <ClInclude Include="..\src\Layers\ActivationLayer.h" />
+    <ClInclude Include="..\src\Layers\AvgPoolingLayer.h" />
+    <ClInclude Include="..\src\Layers\ConversionLayer.h" />
+    <ClInclude Include="..\src\Layers\ConvolutionalLayer.h" />
+    <ClInclude Include="..\src\Layers\DropoutLayer.h" />
+    <ClInclude Include="..\src\Layers\FullyConnectedLayer.h" />
+    <ClInclude Include="..\src\Layers\ILayer.h" />
+    <ClInclude Include="..\src\Layers\MaxPoolingLayer.h" />
+    <ClInclude Include="..\src\Layers\PoolingLayer.h" />
+    <ClInclude Include="..\src\Layers\LeakyReluActivationLayer.h" />
+    <ClInclude Include="..\src\Layers\ReluActivationLayer.h" />
+    <ClInclude Include="..\src\Layers\SigmoidActivationLayer.h" />
+    <ClInclude Include="..\src\Layers\SoftmaxActivationLayer.h" />
+    <ClInclude Include="..\src\Layers\TanhActivationLayer.h" />
+    <ClInclude Include="..\src\NeuralNetwork.h" />
+    <ClInclude Include="..\src\Optimizers\Adagrad.h" />
+    <ClInclude Include="..\src\Optimizers\Adam.h" />
+    <ClInclude Include="..\src\Optimizers\IOptimizer.h" />
+    <ClInclude Include="..\src\Optimizers\Sgd.h" />
+    <ClInclude Include="..\src\Optimizers\SgdWithMomentum.h" />
+    <ClInclude Include="..\src\Optimizers\SgdWithNestorovMomentum.h" />
+    <ClInclude Include="..\src\Parsers\BinaryParser.h" />
+    <ClInclude Include="..\src\Parsers\IdxParser.h" />
+    <ClInclude Include="..\src\Parsers\PngParser.h" />
+    <ClInclude Include="..\src\TrainingSettings.h" />
+    <ClInclude Include="..\src\Utils\FixedPointNumber.h" />
+    <ClInclude Include="..\src\Utils\ImageUtils.h" />
+    <ClInclude Include="..\src\Utils\Limits.h" />
+    <ClInclude Include="..\src\Utils\Persistence.h" />
+    <ClInclude Include="..\src\Utils\PersistenceMapper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\3rdParty\lodepng\lodepng.cpp" />
+    <ClCompile Include="..\3rdParty\TinyXML2\tinyxml2.cpp" />
+    <ClCompile Include="..\cli\main.cpp" />
+    <ClCompile Include="..\src\CommandLineInterface.cpp" />
+    <ClCompile Include="..\src\ConvolutionalNeuralNetwork.cpp" />
+    <ClCompile Include="..\src\NeuralNetwork.cpp" />
+    <ClCompile Include="..\src\Optimizers\Adagrad.cpp" />
+    <ClCompile Include="..\src\Optimizers\Adam.cpp" />
+    <ClCompile Include="..\src\Optimizers\Sgd.cpp" />
+    <ClCompile Include="..\src\Optimizers\SgdWithMomentum.cpp" />
+    <ClCompile Include="..\src\Optimizers\SgdWithNestorovMomentum.cpp" />
+    <ClCompile Include="..\src\Parsers\BinaryParser.cpp" />
+    <ClCompile Include="..\src\Parsers\IdxParser.cpp" />
+    <ClCompile Include="..\src\Parsers\PngParser.cpp" />
+    <ClCompile Include="..\src\Utils\ImageUtils.cpp" />
+    <ClCompile Include="..\src\Utils\Persistence.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{ECAD474F-0CDC-4320-B61F-BC66764EC1D6}</ProjectGuid>
+    <RootNamespace>Thesis</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Petr Rek\source\repos\Thesis\Thesis;C:\gtest\googletest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\gtest\googletest\msvc\2010\gtest\Win32-Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Petr Rek\source\repos\Thesis\Thesis;C:\gtest\googletest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OpenMPSupport>
+      </OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

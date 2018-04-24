@@ -256,7 +256,7 @@ private:
 		return randomVal * (static_cast<BackwardType>(1.0f * multiplier) / static_cast<BackwardType>(static_cast<float>(sqrt(inputs))));
 	}
 
-private:
+protected:
 
 	/// Accepted input size
 	Dimensions inputDimensions;

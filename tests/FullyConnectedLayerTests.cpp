@@ -15,7 +15,7 @@ class FullyConnectedLayerTests : public ::testing::Test, public FullyConnectedLa
 	public:
 	
 		FullyConnectedLayerTests()
-		: FullyConnectedLayer<ForwardType, WeightType>(Dimensions{10, 1, 1}, Dimensions{ 10, 1, 1 }, true)
+		: FullyConnectedLayer<ForwardType, WeightType>(Dimensions{ 3, 1, 1 }, Dimensions{ 2, 1, 1 }, true)
 		{
 		}
 	
@@ -74,4 +74,44 @@ TEST_F(FullyConnectedLayerTests, ForwardPropagationWithoutBias)
 	layer->forwardPropagation(input, layer->getOutput());
 
 	EXPECT_TRUE(expectedOutput == layer->getOutput());
+}
+
+TEST_F(FullyConnectedLayerTests, BackwardPropagation)
+{
+	// Input values
+	
+	Image<ForwardType> input(std::vector<std::vector<std::vector<ForwardType>>>{ {
+		{ 1.0f, 2.0f, 3.0f }
+	} });
+
+	Image<WeightType> testWeights({ {
+		{  1.0f,  2.0f,  3.0f, 10.0f },
+		{ -3.0f, -2.0f, -1.0f, -10.0f }
+		} });
+
+	Image<BackwardType> inputDeltas(std::vector<std::vector<std::vector<BackwardType>>>{{
+		{-1.0f, 2.0f}
+	}});
+
+	// Expected values
+
+	Image<BackwardType> expectedDeltas({ {
+		{  -1.0f,  -2.0f,  -3.0f, -1.0f },
+		{ 2.0f, 4.0f, 6.0f, 2.0f }
+		} });
+
+	Image<BackwardType> expectedOutputDeltas(std::vector<std::vector<std::vector<BackwardType>>>{{
+		{ -7.0f, -6.0f, -5.0f},
+	}});
+
+	// Run and test
+
+	setNeuronWeights(testWeights);
+
+	TrainingSettings settings;
+	settings.batchSize = 10; // to not update weights
+	backwardPropagation(input, getOutput(), inputDeltas, getGradientOutput(), settings);
+
+	EXPECT_TRUE(expectedOutputDeltas == getGradientOutput());
+	EXPECT_TRUE(expectedDeltas == deltas);
 }

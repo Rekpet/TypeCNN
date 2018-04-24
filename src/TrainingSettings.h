@@ -25,8 +25,9 @@ enum class TaskType
  */
 enum class LossFunctionType
 {
-	MeanSquaredError,
-	CrossEntropy
+	MeanSquaredError, // for regression
+	CrossEntropy, // for multiclass classification
+	BinaryCrossEntropy // for binary classification
 };
 
 /*

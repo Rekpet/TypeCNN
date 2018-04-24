@@ -162,6 +162,7 @@ float ConvolutionalNeuralNetwork::train(TrainingSettings & settings, std::vector
 
 			// Compute error
 			auto errorResult = computeError(allLayers.back()->getOutput(), trainingData[s].second, lossFunction);
+
 			epochError += errorResult.first;
 			batchError += errorResult.first;
 			if (isnan(errorResult.first) || isinf(errorResult.first))
@@ -391,12 +392,13 @@ std::pair<BackwardType, Image<BackwardType>> ConvolutionalNeuralNetwork::compute
 				auto expected = static_cast<BackwardType>(expectedOutput(i));
 
 				auto diff = (actual - expected);
-				errorVector(i) = 2 * diff / flattenedSize;
-				error += diff * diff / flattenedSize;
+				errorVector(i) = static_cast<BackwardType>(2) * diff / static_cast<BackwardType>(static_cast<float>(flattenedSize));
+
+				error += diff * diff / static_cast<BackwardType>(static_cast<float>(flattenedSize));
 			}
 			break;
 		}
-		// For classification tasks with output in range <0, 1> - use SoftMax or Sigmoid in last layer
+		// For classification tasks with more than two classes, requires output in range <0, 1> - use SoftMax or Sigmoid in last layer
 		case LossFunctionType::CrossEntropy:
 		{
 			for (auto i = 0u; i < flattenedSize; i++)
@@ -404,12 +406,26 @@ std::pair<BackwardType, Image<BackwardType>> ConvolutionalNeuralNetwork::compute
 				auto actual = static_cast<BackwardType>(actualOutput(i));
 				auto expected = static_cast<BackwardType>(expectedOutput(i));
 
-				errorVector(i) = (actual - expected) / (actual * (ONE - actual) + epsilon);
-				error += (- expected) * static_cast<BackwardType>(log(actual + epsilon)) - ((ONE - expected) * static_cast<BackwardType>(log(ONE - actual + epsilon)));
+				errorVector(i) = -expected / (actual + epsilon);
+
+				error += -expected * static_cast<BackwardType>(log(actual + epsilon));
 			}
 			break;
 		}
+		// For classification tasks with two classes, requires output in range <0, 1> - use SoftMax or Sigmoid in last layer
+		case LossFunctionType::BinaryCrossEntropy:
+		{
+			for (auto i = 0u; i < flattenedSize; i++)
+			{
+				auto actual = static_cast<BackwardType>(actualOutput(i));
+				auto expected = static_cast<BackwardType>(expectedOutput(i));
 
+				errorVector(i) = (actual - expected) / (actual * (ONE - actual) + epsilon);
+
+				error += (-expected) * static_cast<BackwardType>(log(actual + epsilon)) - ((ONE - expected) * static_cast<BackwardType>(log(ONE - actual + epsilon)));
+			}
+			break;
+		}
 	}
 
 	return std::make_pair(error, errorVector);

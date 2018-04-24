@@ -27,28 +27,29 @@ CommandLineInterface::CommandLineInterface()
 	// Set up argument parser
 	options.add_options("Common")
 		("h,help", "Shows this help message.")
-		("c,cnn", "FILE", cxxopts::value<std::string>(), "Input XML file with CNN description.")
+		("c,cnn", "Input XML file with CNN description.", cxxopts::value<std::string>(), "FILE")
 		("g,grayscale", "Specifies that we are working with grayscale PNG images.");
 	options.add_options("Inference")
-		("i,input", "FILE", cxxopts::value<std::string>(), "Input PNG image for inference.");
+		("i,input", "Input PNG image for inference.", cxxopts::value<std::string>(), "FILE");
 	options.add_options("Validation")
-		("v,validate", "FILE(s)", cxxopts::value<std::vector<std::string>>(), "Validation data files separated with space.")
-		("validate-offset", "UINT", cxxopts::value<unsigned>(), "Offset into validation data (how much to skip).")
-		("validate-num", "UINT", cxxopts::value<unsigned>(), "How much validation data to use, 0 == all.");
+		("v,validate", "Validation data files separated with space.", cxxopts::value<std::vector<std::string>>(), "FILE(s)")
+		("validate-offset", "Offset into validation data (how much to skip).", cxxopts::value<unsigned>(), "UINT")
+		("validate-num", "How much validation data to use, 0 == all.", cxxopts::value<unsigned>(), "UINT");
 	options.add_options("Training")
-		("t,train", "FILE(s)", cxxopts::value<std::vector<std::string>>(), "Training data files separated with space.")
-		("train-offset", "UINT", cxxopts::value<unsigned>(), "Offset into training data (how much to skip).")
-		("train-num", "UINT", cxxopts::value<unsigned>(), "How much training data to use, 0 == all.")
-		("s,seed", "UINT", cxxopts::value<unsigned>(), "Seed for random generator.")
-		("e,epochs", "UINT", cxxopts::value<unsigned>(), "Number of epochs for training.")
-		("l,learning-rate", "DOUBLE", cxxopts::value<float>(), "Learning coefficient - recommended range is (0, 1).")
-		("b,batch-size", "UINT", cxxopts::value<unsigned>(), "Batch size (recommended value is 1).")
+		("t,train", "Training data files separated with space.", cxxopts::value<std::vector<std::string>>(), "FILE(s)")
+		("train-offset", "Offset into training data (how much to skip).", cxxopts::value<unsigned>(), "UINT")
+		("train-num", "How much training data to use, 0 == all.", cxxopts::value<unsigned>(), "UINT")
+		("s,seed", "Seed for random generator.", cxxopts::value<unsigned>(), "UINT")
+		("e,epochs", "Number of epochs for training.", cxxopts::value<unsigned>(), "UINT")
+		("l,learning-rate", "Learning coefficient.", cxxopts::value<float>(), "DOUBLE")
+		("d,weight-decay", "Weight decay coefficient.", cxxopts::value<float>(), "DOUBLE")
+		("b,batch-size", "Batch size.", cxxopts::value<unsigned>(), "UINT")
 		("do-not-load", "Do not load weights.")
 		("do-not-save", "Do not save weights after training.")
-		("optimizer", "TYPE", cxxopts::value<std::string>(), "Optimizer to be used (sgd|sgdm|sgdn|adam|adagrad).")
-		("loss-function", "TYPE", cxxopts::value<std::string>(), "Loss function to be used (MSE|CE).")
+		("optimizer", "Optimizer type (sgd|sgdm|sgdn|adam|adagrad).", cxxopts::value<std::string>(), "TYPE")
+		("loss-function", "Loss function to be used (MSE|CE|CEbin).", cxxopts::value<std::string>(), "TYPE")
 		("periodic-validation", "Runs validation before and after each epoch.")
-		("periodic-output", "UINT", cxxopts::value<unsigned>(), "Outputs average error of each X samples.")
+		("periodic-output", "Outputs average error of each X samples.", cxxopts::value<unsigned>(), "UINT")
 		("shuffle", "Shuffle training data before each epoch begins.")
 		("keep-best", "Saves trained network with highest validation accuracy during training.");	
 }
@@ -142,6 +143,9 @@ int CommandLineInterface::runWithGivenArguments(int argc, char ** argv)
 
 			if (args.count("learning-rate"))
 				optimizer->learningRate = args["learning-rate"].as<float>();
+
+			if (args.count("weight-decay"))
+				optimizer->weightDecay = args["weight-decay"].as<float>();
 
 			if (args.count("do-not-load"))
 				loadWeights = false;

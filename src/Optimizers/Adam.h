@@ -43,9 +43,7 @@ public:
 
 	/// Adam coefficients (default values from authors)
 	BackwardType b1;
-	BackwardType b2 ;
-	BackwardType b1t;
-	BackwardType b2t;
+	BackwardType b2;
 
 private:
 
@@ -60,6 +58,10 @@ private:
 
 	/// Previous squared gradients to be used
 	std::vector<std::vector<BackwardType>> prevVectorSquaredGradientsVector;
+
+	/// Adam coefficients
+	BackwardType b1t;
+	BackwardType b2t;
 
 };
 

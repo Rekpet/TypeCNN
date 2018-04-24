@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{b15e9482-1f45-4258-9d2e-377e23237b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Header Files">
+      <UniqueIdentifier>{7e32c6b8-24c7-463c-a148-494508521ee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Source Files">
+      <UniqueIdentifier>{9d352341-fc5e-4676-9bdf-b82c94bcb0f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdParty">
+      <UniqueIdentifier>{303c57db-ae6b-4677-8d7e-e7ba780c0b3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdParty\LodePNG">
+      <UniqueIdentifier>{4882d5a8-13b3-46cc-930a-4915cd7dd621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parsers">
+      <UniqueIdentifier>{31ec0f2f-4242-4021-8559-8bbc4dcb256b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parsers\Header Files">
+      <UniqueIdentifier>{b8d5b775-2a04-4549-aedb-4ecdf98aa83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parsers\Source Files">
+      <UniqueIdentifier>{cf2e0334-2e11-4a78-ace2-6b32ea74966b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layers">
+      <UniqueIdentifier>{57990279-f900-42bf-a902-8232f14c2f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layers\Header Files">
+      <UniqueIdentifier>{e684e70b-8d15-4ad0-8f4d-4c04404be54f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layers\Interface Files">
+      <UniqueIdentifier>{afa862be-5503-4e51-9b99-80a1f6d6052a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdParty\TinyXML2">
+      <UniqueIdentifier>{726b1934-729e-4182-a08d-9f4ed7a2ee0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdParty\CxxOpts">
+      <UniqueIdentifier>{8a10a137-f08b-46aa-a17c-6ca1566c8b3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimizers">
+      <UniqueIdentifier>{c640c270-2bd7-450b-b886-fc792ac3444f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimizers\Header Files">
+      <UniqueIdentifier>{7d4d2997-28d2-4f95-b7f9-b26d8c5b2a36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimizers\Source Files">
+      <UniqueIdentifier>{54df0ed1-faa5-48d8-8508-eb0ee5350190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimizers\Interface Files">
+      <UniqueIdentifier>{8b53db52-36cc-43ab-a45b-2929194f6384}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\CompileSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ConvolutionalNeuralNetwork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\ConvolutionalLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\FullyConnectedLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\ILayer.h">
+      <Filter>Layers\Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\PoolingLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\lodepng\lodepng.h">
+      <Filter>3rdParty\LodePNG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\ImageUtils.h">
+      <Filter>Utils\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Parsers\IdxParser.h">
+      <Filter>Parsers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Parsers\PngParser.h">
+      <Filter>Parsers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\Persistence.h">
+      <Filter>Utils\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\TinyXML2\tinyxml2.h">
+      <Filter>3rdParty\TinyXML2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Parsers\BinaryParser.h">
+      <Filter>Parsers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\DropoutLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\PersistenceMapper.h">
+      <Filter>Utils\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TrainingSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\CxxOpts\cxxopts.hpp">
+      <Filter>3rdParty\CxxOpts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\NeuralNetwork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\ActivationLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Optimizers\IOptimizer.h">
+      <Filter>Optimizers\Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Optimizers\SgdWithMomentum.h">
+      <Filter>Optimizers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Optimizers\Sgd.h">
+      <Filter>Optimizers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\ConversionLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\FixedPointNumber.h">
+      <Filter>Utils\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\LayerAliases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\ReluActivationLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\SigmoidActivationLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\LeakyReluActivationLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\MaxPoolingLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\AvgPoolingLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\SoftmaxActivationLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layers\TanhActivationLayer.h">
+      <Filter>Layers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Optimizers\Adagrad.h">
+      <Filter>Optimizers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Optimizers\Adam.h">
+      <Filter>Optimizers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Optimizers\SgdWithNestorovMomentum.h">
+      <Filter>Optimizers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\Limits.h">
+      <Filter>Utils\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CommandLineInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ConvolutionalNeuralNetwork.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\lodepng\lodepng.cpp">
+      <Filter>3rdParty\LodePNG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Parsers\PngParser.cpp">
+      <Filter>Parsers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Parsers\IdxParser.cpp">
+      <Filter>Parsers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utils\Persistence.cpp">
+      <Filter>Utils\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\TinyXML2\tinyxml2.cpp">
+      <Filter>3rdParty\TinyXML2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Parsers\BinaryParser.cpp">
+      <Filter>Parsers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\NeuralNetwork.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Optimizers\SgdWithMomentum.cpp">
+      <Filter>Optimizers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Optimizers\Sgd.cpp">
+      <Filter>Optimizers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Optimizers\Adagrad.cpp">
+      <Filter>Optimizers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Optimizers\Adam.cpp">
+      <Filter>Optimizers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Optimizers\SgdWithNestorovMomentum.cpp">
+      <Filter>Optimizers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utils\ImageUtils.cpp">
+      <Filter>Utils\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CommandLineInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cli\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
