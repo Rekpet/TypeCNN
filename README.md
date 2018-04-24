@@ -31,6 +31,7 @@ Usage:
   -s, --seed UINT             Seed for random generator.
   -e, --epochs UINT           Number of epochs for training.
   -l, --learning-rate DOUBLE  Learning coefficient.
+  -d, --weight-decay  DOUBLE  Weight decay
   -b, --batch-size UINT       Batch size.
       --do-not-load           Do not load weights.
       --do-not-save           Do not save weights after training.
