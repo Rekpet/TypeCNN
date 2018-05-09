@@ -321,7 +321,7 @@ float ConvolutionalNeuralNetwork::validate(const std::vector<std::pair<Image<For
 			{
 				std::cout << "Succesfully classified " << correctCnt << " out of " << totalCnt << std::endl;
 				std::cout << "\tSuccess rate: " << successRate << " %" << std::endl;
-				std::cout << "\tError   rate: " << 100.0f - successRate << " %" << std::endl;
+				std::cout << "\tError   rate: " << (static_cast<float>(totalCnt - correctCnt) / totalCnt * 100.0f)  << " %" << std::endl;
 			}
 
 			outVal = successRate;
@@ -384,6 +384,7 @@ std::pair<BackwardType, Image<BackwardType>> ConvolutionalNeuralNetwork::compute
 	switch (lossFunctionType)
 	{
 		// For regression tasks and outputs different than <0,1>
+		// Virtually any activation function may be used in last layer (depends on your task, you dont want SoftMax for Regression as it wont work etc.)
 		case LossFunctionType::MeanSquaredError: default:
 		{
 			for (auto i = 0u; i < flattenedSize; i++)
@@ -398,7 +399,9 @@ std::pair<BackwardType, Image<BackwardType>> ConvolutionalNeuralNetwork::compute
 			}
 			break;
 		}
-		// For classification tasks with more than two classes, requires output in range <0, 1> - use SoftMax or Sigmoid in last layer
+		// For classification tasks with more than two classes, requires output in range <0, +INF> - use SoftMax, Sigmoid or ReLU in last layer
+		// However only SoftMax is recommended as it is suited for this loss function
+		// Sigmoid is not an ideal fit and will diverge soon, ReLU will not throw NaN, but will just not converge (it is not in <0,1> range)
 		case LossFunctionType::CrossEntropy:
 		{
 			for (auto i = 0u; i < flattenedSize; i++)
@@ -413,6 +416,7 @@ std::pair<BackwardType, Image<BackwardType>> ConvolutionalNeuralNetwork::compute
 			break;
 		}
 		// For classification tasks with two classes, requires output in range <0, 1> - use SoftMax or Sigmoid in last layer
+		// However only Sigmoid is recommended here (as SoftMax computes probabilities and does not expect multiple independent classifications)
 		case LossFunctionType::BinaryCrossEntropy:
 		{
 			for (auto i = 0u; i < flattenedSize; i++)

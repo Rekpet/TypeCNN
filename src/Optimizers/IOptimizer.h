@@ -17,7 +17,6 @@
 
 /*
  * @brief Interface all optimizers need to follow
- * @brief Great overview here: http://ruder.io/optimizing-gradient-descent/index.html
  */
 class IOptimizer
 {

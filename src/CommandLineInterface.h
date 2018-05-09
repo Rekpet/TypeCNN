@@ -45,6 +45,8 @@ private:
 
 	void errorWhenParsingArguments(const std::string & reason);
 
+	void showTypeInfo();
+
 private:
 
 	/// Convolutional neural network to work with

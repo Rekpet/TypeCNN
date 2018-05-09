@@ -12,23 +12,26 @@
 #include "src/Utils/Persistence.h"
 #include "src/Parsers/BinaryParser.h"
 #include "src/ConvolutionalNeuralNetwork.h"
+#include <src/Utils/Limits.h>
 #include "src/Utils/PersistenceMapper.h"
 
+#include <algorithm>
+#include <iomanip>
 #include <regex>
 #include <sstream>
-#include <algorithm>
 
 /*
  * @brief Command line interfasce sets up argument parser
  */
 CommandLineInterface::CommandLineInterface()
-	: options("CNN-library", "Command line interface for CNN-library.")
+	: options("TypeCNN", "TypeCNN - data type independent Convolutional Neural Network library.")
 {
 	// Set up argument parser
 	options.add_options("Common")
 		("h,help", "Shows this help message.")
 		("c,cnn", "Input XML file with CNN description.", cxxopts::value<std::string>(), "FILE")
-		("g,grayscale", "Specifies that we are working with grayscale PNG images.");
+		("g,grayscale", "Specifies that we are working with grayscale PNG images.")
+		("type-info", "Shows info about types used.");
 	options.add_options("Inference")
 		("i,input", "Input PNG image for inference.", cxxopts::value<std::string>(), "FILE");
 	options.add_options("Validation")
@@ -98,6 +101,13 @@ int CommandLineInterface::runWithGivenArguments(int argc, char ** argv)
 		{
 			std::cout << options.help({ "Common", "Inference", "Validation", "Training" }) << std::endl;
 			return EXIT_SUCCESS;
+		}
+
+		if (args.count("type-info"))
+		{
+			showTypeInfo();
+			if (argcBackup == 2) return EXIT_SUCCESS;
+			argcBackup--; // do not include in checks later
 		}
 
 		if (args.count("grayscale"))
@@ -423,6 +433,29 @@ void CommandLineInterface::keepBestCallback(float epochAccuracy)
 		bestAccuracy = epochAccuracy;
 		dumpNetworkToDisk();
 	}
+}
+
+
+/*
+ * @brief Keep best callback
+ */
+void CommandLineInterface::showTypeInfo()
+{
+	std::streamsize ss = std::cout.precision();
+	std::cout.precision(30);
+	std::cout << "=== ForwardType ===" << std::endl;
+	std::cout << "Min: " << Limits::getMinimumValue<ForwardType>() << std::endl;
+	std::cout << "Max: " << Limits::getMaximumValue<ForwardType>() << std::endl;
+	std::cout << "Eps: " << Limits::getEpsilonValue<ForwardType>() << std::endl;
+	std::cout << "=== BackwardType ===" << std::endl;
+	std::cout << "Min: " << Limits::getMinimumValue<BackwardType>() << std::endl;
+	std::cout << "Max: " << Limits::getMaximumValue<BackwardType>() << std::endl;
+	std::cout << "Eps: " << Limits::getEpsilonValue<BackwardType>() << std::endl;
+	std::cout << "=== WeightType ===" << std::endl;
+	std::cout << "Min: " << Limits::getMinimumValue<WeightType>() << std::endl;
+	std::cout << "Max: " << Limits::getMaximumValue<WeightType>() << std::endl;
+	std::cout << "Eps: " << Limits::getEpsilonValue<WeightType>() << std::endl << std::endl;
+	std::cout.precision(ss);
 }
 
 

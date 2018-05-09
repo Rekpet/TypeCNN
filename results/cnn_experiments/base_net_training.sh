@@ -1,0 +1,2 @@
+echo "======================== Base net training ========================"
+./../../TypeCNN --type-info  -c net.xml -v ../../resources/mnist/test-images.idx3-ubyte -t ../../resources/mnist/train-images.idx3-ubyte -e 10 -s 8786 --optimizer sgdm --loss-function MSE --periodic-output 5000 --do-not-load --shuffle -l 0.01 -d 0.001

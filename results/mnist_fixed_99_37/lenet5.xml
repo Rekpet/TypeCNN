@@ -1,0 +1,62 @@
+<convolutional_neural_network>
+    <settings>
+        <task type="classification"/>
+        <input width="28" height="28" depth="1"/>
+        <output width="10" height="1" depth="1"/>
+    </settings>
+    <architecture>
+        <layer type="convolutional">
+            <stride value="1"/>
+            <zero_padding value="2"/>
+            <filters path="1_conv_layer.txt" number="6" extent="5"/>
+            <bias use="true"/>
+        </layer>
+        <layer type="pooling">
+            <operation type="max"/>
+            <stride value="2"/>
+            <extent value="2"/>
+        </layer>
+        <layer type="activation">
+            <activation type="leaky_relu"/>
+        </layer>
+        <layer type="convolutional">
+            <stride value="1"/>
+            <zero_padding value="0"/>
+            <filters path="4_conv_layer.txt" number="16" extent="5"/>
+            <bias use="true"/>
+        </layer>
+        <layer type="pooling">
+            <operation type="max"/>
+            <stride value="2"/>
+            <extent value="2"/>
+        </layer>
+        <layer type="activation">
+            <activation type="leaky_relu"/>
+        </layer>
+        <layer type="convolutional">
+            <stride value="1"/>
+            <zero_padding value="0"/>
+            <filters path="7_conv_layer.txt" number="120" extent="5"/>
+            <bias use="true"/>
+        </layer>
+        <layer type="activation">
+            <activation type="leaky_relu"/>
+        </layer>
+        <layer type="fully_connected">
+            <output_layer size="84"/>
+            <weights path="9_fc_layer.txt"/>
+            <bias use="true"/>
+        </layer>
+        <layer type="activation">
+            <activation type="leaky_relu"/>
+        </layer>
+        <layer type="fully_connected">
+            <output_layer size="10"/>
+            <weights path="11_fc_layer.txt"/>
+            <bias use="true"/>
+        </layer>
+        <layer type="activation">
+            <activation type="leaky_relu"/>
+        </layer>
+    </architecture>
+</convolutional_neural_network>

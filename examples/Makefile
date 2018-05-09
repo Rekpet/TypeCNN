@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-std=c++14
 
-.PHONY: all benchmark fixed demo
+.PHONY: benchmark fixed demo
 
 all: benchmark fixed demo
 

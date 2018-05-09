@@ -86,7 +86,6 @@ public:
 		{
 			for (auto k = 0u; k < flattenedSize; k++)
 			{
-				// https://stackoverflow.com/questions/37790990/derivative-of-a-softmax-function-explanation
 				if (i == k)
 				{
 					outGradients(i) += (static_cast<BackwardType>(out(i)) * (static_cast<BackwardType>(1) - static_cast<BackwardType>(out(i)))) * inGradients(k);
