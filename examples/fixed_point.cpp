@@ -200,8 +200,8 @@ private:
 
 int main(int, char **)
 {
-	auto trainingData = IdxParser::parseLabelledImages("resources/mnist/train-images.idx3-ubyte", "resources/mnist/train-labels.idx1-ubyte", CLASSES_NUM);
-	auto validationData = IdxParser::parseLabelledImages("resources/mnist/test-images.idx3-ubyte", "resources/mnist/test-labels.idx1-ubyte", CLASSES_NUM);
+	auto trainingData = IdxParser::parseLabelledImages("../resources/mnist/train-images.idx3-ubyte", "../resources/mnist/train-labels.idx1-ubyte", CLASSES_NUM);
+	auto validationData = IdxParser::parseLabelledImages("../resources/mnist/test-images.idx3-ubyte", "../resources/mnist/test-labels.idx1-ubyte", CLASSES_NUM);
 
 	if (trainingData.empty() || validationData.empty())
 	{
