@@ -13,21 +13,39 @@
 
 #include "src/Image.h"
 
-#include <exception>
+#include <stdexcept>
 
- /*
-  * @brief Thrown if single image could not be opened
-  */
-class CouldNotOpenImage : public std::exception 
+/*
+ * @brief Generic exception thrown by parser
+ */
+class IOException : public std::runtime_error
 {
+
+public:
+
+	explicit IOException(const std::string & msg)
+		: std::runtime_error(msg.c_str()) {};
+
+};
+
+
+/*
+ * @brief Thrown if single image could not be opened
+ */
+class CouldNotOpenImage : public IOException 
+{ 
+
+	using IOException::IOException; 
 };
 
 
 /*
  * @brief Thrown if images loaded in batches do not have the same dimensions
  */
-class ImagesAreNotConsistent : public std::exception
-{
+class ImagesAreNotConsistent : public IOException 
+{ 
+
+	using IOException::IOException; 
 };
 
 

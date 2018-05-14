@@ -22,7 +22,7 @@ Image<ForwardType> PngParser::parseInputImage(const std::string & path, const bo
 
 	if (lodepng::decode(image, width, height, path))
 	{
-		throw CouldNotOpenImage();
+		throw CouldNotOpenImage("PNG file could not be opened.");
 	}
 
 	Dimensions imgDim = { width, height, grayscale ? 1u : 3u };
@@ -85,14 +85,14 @@ std::vector<std::pair<Image<ForwardType>, Image<ForwardType>>> PngParser::parseL
 
 					if (!out.empty() && out.front().first.getDimensions() != img.getDimensions())
 					{
-						throw ImagesAreNotConsistent();
+						throw ImagesAreNotConsistent("Image sizes are not consistent.");
 					}
 
 					out.emplace_back(img, parsedLine.second);
 				}
 				else
 				{
-					throw ImagesAreNotConsistent();
+					throw ImagesAreNotConsistent("Image sizes are not consistent.");
 				}
 			}
 

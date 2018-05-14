@@ -295,7 +295,17 @@ int CommandLineInterface::runWithGivenArguments(int argc, char ** argv)
 	}
 	catch (const CNNException & e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "CNN exception: " << e.what() << std::endl;
+		return EXIT_FAILURE;
+	}
+	catch (const IOException & e)
+	{
+		std::cerr << "I/O exception: " << e.what() << std::endl;
+		return EXIT_FAILURE;
+	}
+	catch (const std::exception & e)
+	{
+		std::cerr << "Unknown exception: " << e.what() << std::endl;
 		return EXIT_FAILURE;
 	}
 
