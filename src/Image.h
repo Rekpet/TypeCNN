@@ -120,9 +120,9 @@ public:
 	 */
 	Image(const std::vector<std::vector<std::vector<TYPE>>> & img)
 	{
-		dimensions.width = img[0][0].size();
-		dimensions.height = img[0].size();
-		dimensions.depth = img.size();
+		dimensions.width = static_cast<unsigned>(img[0][0].size());
+		dimensions.height = static_cast<unsigned>(img[0].size());
+		dimensions.depth = static_cast<unsigned>(img.size());
 
 		flattenedSize = dimensions.width * dimensions.height * dimensions.depth;
 		image = std::shared_ptr<TYPE>(new TYPE[flattenedSize], std::default_delete<TYPE[]>());

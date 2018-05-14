@@ -8,14 +8,17 @@
 
 #include "src/Parsers/IdxParser.h"
 
+#include <ctime>
+#include <string>
+
 constexpr unsigned CLASSES_NUM = 10;
 
 int main(int, char **)
 {
 	srand(static_cast<unsigned>(time(NULL)));
 
-	auto trainingData = IdxParser::parseLabelledImages("../resources/mnist/train-images.idx3-ubyte", "../resources/mnist/train-labels.idx1-ubyte", CLASSES_NUM);
-	auto validationData = IdxParser::parseLabelledImages("../resources/mnist/test-images.idx3-ubyte", "../resources/mnist/test-labels.idx1-ubyte", CLASSES_NUM);
+	auto trainingData = IdxParser::parseLabelledImages("resources/mnist/train-images.idx3-ubyte", "resources/mnist/train-labels.idx1-ubyte", CLASSES_NUM);
+	auto validationData = IdxParser::parseLabelledImages("resources/mnist/test-images.idx3-ubyte", "resources/mnist/test-labels.idx1-ubyte", CLASSES_NUM);
 
 	if (trainingData.empty() || validationData.empty())
 	{
