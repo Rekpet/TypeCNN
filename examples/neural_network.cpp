@@ -43,7 +43,7 @@ int main(int, char **)
 	auto inputSize = trainingData[0].first.getFlattenedSize();
 	auto nn = NeuralNetwork(
 		inputSize, // input size
-		{{64, ActivationFunction::Tanh}}, // hidden layers
+		{{128, ActivationFunction::Tanh}, {64, ActivationFunction::Tanh}}, // hidden layers
 		{10, ActivationFunction::SoftMax}, // output layer
 		true, // use bias 
 		TaskType::Classification // task type
@@ -55,15 +55,18 @@ int main(int, char **)
 	settings.batchSize = 1;
 	settings.epochOutputRate = 1;
 	settings.errorOutputRate = 10000;
-	settings.periodicValidation = false;
+	settings.periodicValidation = true;
 	settings.shuffle = true;
+
+	auto optimizer = std::make_shared<SgdWithMomentum>();
+	optimizer->learningRate = 0.001f;
+	optimizer->momentum = 0.8f;
+	optimizer->weightDecay = 0.001f;
 
 	// Run training and validation
 	nn.enableOutput();
 
-	nn.train(settings, flattenedTrainingData, LossFunctionType::CrossEntropy, std::make_shared<Adam>());
-
-	nn.validate(flattenedValidationData);
+	nn.train(settings, flattenedTrainingData, LossFunctionType::CrossEntropy, optimizer, flattenedValidationData);
 
 	return EXIT_SUCCESS;
 }
